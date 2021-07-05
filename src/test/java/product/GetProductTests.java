@@ -1,4 +1,9 @@
 package product;
 
-public class GetProductTests {
+import commons.TestBase;
+
+
+public class GetProductTests extends TestBase {
+
+
 }

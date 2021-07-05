@@ -19,17 +19,22 @@ public class DeleteProductTests extends TestBase {
     private Product validProduct;
 
     @BeforeClass
-    public void generateTestData(){
-        validUser = new User("Tatu", "tatu@email.com", "123abc", "true");
+    public void generateTestData() {
+        validUser = new User("User Delete", "delete@email.com", "123456", "true");
+        validProduct = new Product("Computador Default", 1000, "Desktop", 10);
         registerUserRequest(SPEC, validUser);
         authenticateUserRequest(SPEC, validUser);
-        validProduct = new Product("Computador", 1000, "Desktop", 10);
         registerProductRequest(SPEC, validProduct, validUser);
     }
 
+    @AfterClass
+    public void removeTestData() {
+        deleteUserRequest(SPEC, validUser);
+    }
+
     @Test
-    public void shouldRemoveProductReturnSuccessMessageAndStatus200(){
-        Response deleteProductResponse = deleteProductRequest(SPEC, validProduct, validUser );
+    public void shouldRemoveProductReturnSuccessMessageAndStatus200() {
+        Response deleteProductResponse = deleteProductRequest(SPEC, validProduct, validUser);
         deleteProductResponse.
                 then().
                 assertThat().
@@ -37,8 +42,4 @@ public class DeleteProductTests extends TestBase {
                 body("message", equalTo(Constants.MESSAGE_SUCCESS_DELETE));
     }
 
-    @AfterClass
-    public void removeTestData(){
-        deleteUserRequest(SPEC, validUser);
-    }
 }

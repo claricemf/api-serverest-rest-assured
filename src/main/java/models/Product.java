@@ -22,10 +22,10 @@ public class Product {
 
     public String getProductJsonRepresentationAsString() {
         JSONObject productJsonRepresentation = new JSONObject();
-        productJsonRepresentation.put("name", this.name);
-        productJsonRepresentation.put("price", this.price);
-        productJsonRepresentation.put("description", this.description);
-        productJsonRepresentation.put("amount", this.amount);
+        productJsonRepresentation.put("nome", this.name);
+        productJsonRepresentation.put("preco", this.price);
+        productJsonRepresentation.put("descricao", this.description);
+        productJsonRepresentation.put("quantidade", this.amount);
         return productJsonRepresentation.toJSONString();
     }
 }

@@ -24,7 +24,7 @@ public class DeleteUserTests extends TestBase {
     public void shouldRemoveUserReturnSuccessMessageAndStatus200(){
         Response deleteUserResponse = deleteUserRequest(SPEC, validUser);
         deleteUserResponse.
-                then().
+                then().log().body().
                 assertThat().
                 statusCode(200).
                 body("message", equalTo(Constants.MESSAGE_SUCCESS_DELETE));

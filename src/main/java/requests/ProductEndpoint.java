@@ -1,17 +1,22 @@
 package requests;
+
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.Product;
 import models.User;
+import org.json.simple.JSONObject;
+
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 
 public class ProductEndpoint extends RequestBase {
-
     public static Response registerProductRequest(RequestSpecification spec, Product product, User user) {
-         Response registerProductResponse =
+        Response registerProductResponse =
                 given().
                         spec(spec).
-                        header("Authorization", user.authToken, "Content-Type", "application/json").
+                        header("Authorization", user.authToken).
+                        header("Content-Type","application/json").
                         and().
                         body(product.getProductJsonRepresentationAsString()).
                         when().
@@ -25,8 +30,8 @@ public class ProductEndpoint extends RequestBase {
         Response deleteProductResponse =
                 given().
                         spec(spec).
-                        header("Content-Type", "application/json").
                         header("Authorization", user.authToken).
+                        header("Content-Type","application/json").
                         when().
                         delete("produtos/" + product.productID);
         return deleteProductResponse;
@@ -36,8 +41,8 @@ public class ProductEndpoint extends RequestBase {
         Response getProductResponse =
                 given().
                         spec(spec).
-                        header("Content-Type", "application/json").
                         header("Authorization", user.authToken).
+                        header("Content-Type","application/json").
                         when().
                         get("produtos/" + product.productID);
         return getProductResponse;
@@ -47,8 +52,8 @@ public class ProductEndpoint extends RequestBase {
         Response getAllProductResponse =
                 given().
                         spec(spec).
-                        header("Content-Type", "application/json").
                         header("Authorization", user.authToken).
+                        header("Content-Type","application/json").
                         when().
                         get("produtos/" + query);
         return getAllProductResponse;
@@ -58,8 +63,8 @@ public class ProductEndpoint extends RequestBase {
         Response putProductResponse =
                 given().
                         spec(spec).
-                        header("Content-Type", "application/json").
                         header("Authorization", user.authToken).
+                        header("Content-Type","application/json").
                         and().
                         body(product.getProductJsonRepresentationAsString()).
                         when().

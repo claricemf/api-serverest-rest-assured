@@ -50,7 +50,7 @@ public class GetUserTests extends TestBase {
     public void shouldReturnUsersAndStatus200(String query, int totalUsers){
         Response getUserResponse = getUserRequest(SPEC, query);
         getUserResponse.
-                then().
+                then().log().body().
                 assertThat().
                 statusCode(200).
                 body("quantidade", equalTo(totalUsers));

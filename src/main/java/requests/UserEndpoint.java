@@ -38,7 +38,6 @@ public class UserEndpoint extends RequestBase {
                         body(user.getUserJsonRepresentationAsString()).
                         when().
                         post("usuarios");
-
         user.setUserId(getValueFromResponse(registerUserResponse, "_id"));
         return registerUserResponse;
     }

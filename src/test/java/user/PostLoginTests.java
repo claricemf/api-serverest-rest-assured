@@ -33,7 +33,7 @@ public class PostLoginTests extends TestBase {
     public void shouldReturnSuccessMessageAuthTokenAndStatus200(){
         Response loginSuccessResponse = authenticateUserRequest(SPEC, validUser);
         loginSuccessResponse.
-                then().
+                then().log().body().
                 assertThat().
                 statusCode(200).
                 body("message", equalTo(Constants.MESSAGE_SUCCESS_LOGIN)).
@@ -46,7 +46,7 @@ public class PostLoginTests extends TestBase {
 
         Response loginFailureResponse = authenticateUserRequest(SPEC, invalidUser);
         loginFailureResponse.
-                then().
+                then().log().body().
                 assertThat().
                 statusCode(401).
                 body("message", equalTo(Constants.MESSAGE_FAILED_LOGIN)).
