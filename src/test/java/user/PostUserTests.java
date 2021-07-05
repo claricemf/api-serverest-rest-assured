@@ -16,7 +16,7 @@ public class PostUserTests extends TestBase {
 
     @BeforeClass
     public void generateTestData() {
-        validUser = new User("User Clarice", "new@email.com", "321321", "true");
+        validUser = new User("User Created", "new_user_created@email.com", "321321", "true");
     }
 
     @AfterClass
@@ -25,7 +25,7 @@ public class PostUserTests extends TestBase {
     }
 
     @Test
-    public void shouldReturnSuccessMessageNewUserAndStatus200() {
+    public void shouldReturnSuccessMessageNewUserAndStatus201() {
         Response createUserSuccessResponse = registerUserRequest(SPEC, validUser);
         createUserSuccessResponse.
                 then().log().body().

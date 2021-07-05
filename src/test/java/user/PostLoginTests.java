@@ -19,9 +19,9 @@ public class PostLoginTests extends TestBase {
 
     @BeforeClass
     public void generateTestData(){
-        validUser = new User("Mari", "mari@email.com", "123abc", "true");
+        validUser = new User("User Login", "login_valid_user@email.com", "abd123", "true");
         registerUserRequest(SPEC, validUser);
-        invalidUser = new User("Mari", "mari@email.com", "asdas", "true");
+        invalidUser = new User("User Login Invalid", "login_invalid_user@email.com", "123abc", "true");
     }
 
     @AfterClass

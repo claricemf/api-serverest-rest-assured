@@ -36,7 +36,7 @@ public class DeleteProductTests extends TestBase {
     public void shouldRemoveProductReturnSuccessMessageAndStatus200() {
         Response deleteProductResponse = deleteProductRequest(SPEC, validProduct, validUser);
         deleteProductResponse.
-                then().
+                then().log().body().
                 assertThat().
                 statusCode(200).
                 body("message", equalTo(Constants.MESSAGE_SUCCESS_DELETE));

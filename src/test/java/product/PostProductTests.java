@@ -23,19 +23,19 @@ public class PostProductTests extends TestBase {
     @BeforeClass
     public void generateTestData() {
         validUser = new User("User Clarice", "clarice@email.com", "321321", "true");
-        validProduct = new Product("Notebook Blue", 1000, "Desktop", 10);
+        validProduct = new Product("Notebook New", 1000, "Desktop", 10);
         registerUserRequest(SPEC, validUser);
         authenticateUserRequest(SPEC, validUser);
     }
 
     @AfterClass
     public void removeTestData() {
-        deleteUserRequest(SPEC, validUser);
         deleteProductRequest(SPEC, validProduct, validUser);
+        deleteUserRequest(SPEC, validUser);
     }
 
     @Test
-    public void shouldReturnSuccessMessageNewProductAndStatus200() {
+    public void shouldReturnSuccessMessageNewProductAndStatus201() {
         Response createProductSuccessResponse = registerProductRequest(SPEC, validProduct, validUser);
         createProductSuccessResponse.
                 then().log().body().

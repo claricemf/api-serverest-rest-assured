@@ -20,6 +20,30 @@ public class Product {
         this.productID = productID;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public String getProductJsonRepresentationAsString() {
         JSONObject productJsonRepresentation = new JSONObject();
         productJsonRepresentation.put("nome", this.name);
