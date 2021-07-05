@@ -1,5 +1,5 @@
 # api-serverest-rest-assured
-**Automação da API ServeRest**
+**Automação da API ServeRest com REST Assured**
 
 Este projeto tem como objetivo a automatização dos cenários de testes para os endpoints de Usuários e Produtos da API ServeRest. 
 
